@@ -1,6 +1,6 @@
 """ vimrc -- Vim settings
 """ 2018 Christopher Birkbeck
-
+	
 set nocompatible                " Turns off vi-compatibility.
 set history=500                 " History elements 
 
@@ -22,10 +22,22 @@ set confirm                     " Prints a confirmation command.
 
 set laststatus=2                " Keeps that status bar on screen.
 
+" Highlight special characters.
+" Tab literals are | followed by periods.
+" Trailing spaces are special dots.
+" # indicates when a line extends off screen.
+set list
+set listchars=tab:\|*,trail:◦,extends:\#,nbsp:.
+
+"" Mouse controls ""
+
+set mouse=a                     " Use mouse in all modes.
+
 "" Colours and Fonts ""
 
 colorscheme murphy              " Default colour scheme.
 syntax enable                   " Enable syntax colouring.
+hi Normal ctermbg=none          " Transparency.
 
 "" Tab settings ""
 
@@ -47,11 +59,14 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Map ,Return to save but not quit.
+map <leader><CR> :w<CR>
+
 "" Search and replace ""
 
 set ignorecase                  " Ignores case in searches.
 set smartcase                   " Enables case-sensitivity with uppercase characters. 
-set incsearch                   " Icrementally searches documents.
+set incsearch                   " Incrementally searches documents.
 set hlsearch                    " Highlights search matches.
 
 " Removes search highlighting. 
@@ -72,4 +87,4 @@ map <leader>s? z=               " Corrects words.
 set foldenable                  " Enable folds.
 set foldlevelstart=10           "
 set foldnestmax=10              "
-set foldmethod=indent           "
+set foldmethod=syntax           "
