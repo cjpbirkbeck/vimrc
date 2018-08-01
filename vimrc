@@ -1,6 +1,6 @@
 """ vimrc -- Vim settings
 """ 2018 Christopher Birkbeck
-	
+
 set nocompatible                " Turns off vi-compatibility.
 set history=500                 " History elements 
 
@@ -9,7 +9,7 @@ set history=500                 " History elements
 filetype indent plugin on       " Detect file types. 
 
 set number                      " Prints the current line number.
-set relativenumber              " Prints the relative line numbers from cursor.
+set cursorline                  " Highlights the current line.
 
 set showmatch                   " Prints the matching bracket.
 
@@ -20,7 +20,7 @@ set wildmenu                    " Command line completion.
 set lazyredraw                  " Redraws screen during operations.
 set confirm                     " Prints a confirmation command.
 
-set laststatus=2                " Keeps that status bar on screen.
+set laststatus=2                " Keeps the status bar on screen.
 
 " Highlight special characters.
 " Tab literals are | followed by periods.
@@ -51,7 +51,8 @@ set si                          " Turns on smart-indenting.
 
 "" Key bindings ""
 
-let mapleader = ","             " Set comma as the special user-defined key bindings.
+" let mapleader = ","             " Set comma as the special user-defined key bindings.
+" noremap <leader>, ,             " Binds backslash to the comma's typical function.
 
 " Sets Control + h/j/k/l to move across Windows.
 map <C-h> <C-w>h
@@ -61,6 +62,9 @@ map <C-l> <C-w>l
 
 " Map ,Return to save but not quit.
 map <leader><CR> :w<CR>
+
+" Prints the relative line numbers from cursor.
+map <leader>n :call SetNumbering()
 
 "" Search and replace ""
 
@@ -88,3 +92,13 @@ set foldenable                  " Enable folds.
 set foldlevelstart=10           "
 set foldnestmax=10              "
 set foldmethod=syntax           "
+
+"" Functions ""
+
+function SetNumbering()
+  if &relativenumber
+    set relativenumber! cursorline
+  else
+    set relativenumber cursorline!
+  endif
+endfunction
