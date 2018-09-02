@@ -35,9 +35,9 @@ set mouse=a                     " Use mouse in all modes.
 
 "" Colours and Fonts ""
 
-colorscheme murphy              " Default colour scheme.
-syntax enable                   " Enable syntax colouring.
-hi Normal ctermbg=none          " Transparency.
+" colorscheme murphy              " Default colour scheme.
+" syntax enable                   " Enable syntax colouring.
+" hi Normal ctermbg=none          " Transparency.
 
 "" Tab settings ""
 
